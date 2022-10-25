@@ -1,0 +1,31 @@
+<nav class="container flex justify-space-between">
+  <h1>{{ title }}</h1>
+  <div class="flex align-items-center">
+    <button mat-stroked-button color="primary" [routerLink]="['/product']">Explorador</button>
+  </div>
+</nav>
+<br>
+<section class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="product-form w-100">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Identificador</mat-label>
+        <input matInput formControlName="id">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="code">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <ng-container *ngIf="!form.disabled">
+      <div class="flex justify-space-end">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Guardar</button>
+      </div>
+    </ng-container>
+  </form>
+</section>

@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0
+}
+
+.container {
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1024px;
+}
+
+.flex {
+  display: flex;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+.justify-space-end {
+  justify-content: end;
+}
+.align-items-center {
+  align-items: center;
+}
+.flex-reverse {
+  flex-direction: row-reverse;
+}
+
+.w-100 {
+  width: 100%;
+}

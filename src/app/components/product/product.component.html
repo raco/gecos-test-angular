@@ -1,0 +1,49 @@
+<nav class="container flex justify-space-between">
+  <h1>Productos</h1>
+  <div class="flex align-items-center">
+    <button mat-stroked-button color="primary" [routerLink]="['new']">Crear</button>
+    <button mat-button (click)="regen()">Regenerar</button>
+  </div>
+</nav>
+
+<section class="container">
+  <mat-form-field class="w-100" appearance="fill">
+    <mat-label>Buscar</mat-label>
+    <input matInput type="text" [(ngModel)]="searchQuery">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</section>
+
+<section class="container">
+  <ng-container *ngIf="(products$ | async) as products">
+    <ng-container *ngFor="let product of products | filterProducts: searchQuery">
+      <div class="product flex justify-space-between align-items-center">
+        <div class="product__details">
+          <a
+            [routerLink]="[product.id]"
+            [queryParams]="{ action: 'view' }"
+          >{{ product.name }}</a>
+          <span>{{ product.code }}</span>
+        </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Boton menu opciones de producto" [matMenuTriggerData]="{product: product}">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </ng-container>
+</section>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-product="product">
+    <button mat-menu-item [routerLink]="[product.id]"
+        [queryParams]="{ action: 'edit' }">
+      <mat-icon>edit</mat-icon>
+      <span>Editar</span>
+    </button>
+    <button mat-menu-item (click)="deleteProductDialog(product.id)">
+      <mat-icon>delete</mat-icon>
+      <span>Eliminar</span>
+    </button>
+  </ng-template>
+</mat-menu>
+

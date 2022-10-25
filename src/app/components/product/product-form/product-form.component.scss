@@ -1,0 +1,19 @@
+.product-form {
+  display: block;
+
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+    grid-gap: 1%;
+
+    mat-form-field {
+      grid-column: 3 / span 1;
+    }
+    mat-form-field:first-child {
+      grid-column: 1 / span 2;
+    }
+    mat-form-field:last-child {
+      grid-column: 4 / span 3;
+    }
+  }
+}
